@@ -9,7 +9,6 @@ target 'alarm-you-tube' do
 
   pod 'GoogleAPIClientForREST/YouTube'
   pod 'GoogleSignIn'
-
   pod 'Firebase/Core'
 
 end
