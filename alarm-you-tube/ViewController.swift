@@ -10,16 +10,44 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func signInButton(_ sender: UIButton) {
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func apiCall() {
+        //Using Yelp API to find restaurants nearby
+        let baseURL = " https://www.googleapis.com/youtube/v3/search";
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            if let url = URL(string: baseURL){
+                let session = URLSession.shared;
+                
+                let request = NSMutableURLRequest(url: url);
+                request.httpMethod = "GET";
+                
+                //Add parameters
+                
+                
+                let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+                    if error != nil {
+                        print("error: \(error!)")
+                        return;
+                    }
+                    
+                    if let urlContent = data {
+                        
+                        DispatchQueue.main.sync {
+                           
+                        }
+                        
+                    }
+                }
+                
+                task.resume();
+            }
+        }
     }
-
 
 }
 
