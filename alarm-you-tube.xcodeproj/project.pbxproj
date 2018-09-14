@@ -21,6 +21,7 @@
 		A63DAFEE20B3A9A235520D8C /* Pods-alarm-you-tube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alarm-you-tube.release.xcconfig"; path = "Pods/Target Support Files/Pods-alarm-you-tube/Pods-alarm-you-tube.release.xcconfig"; sourceTree = "<group>"; };
 		DCC7426D774B459A9B8C40CF /* Pods-alarm-you-tube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alarm-you-tube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alarm-you-tube/Pods-alarm-you-tube.debug.xcconfig"; sourceTree = "<group>"; };
 		F84EEE402149D14F0033D927 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F888A94D214C6099001FA997 /* JSONSampleData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = JSONSampleData.geojson; sourceTree = "<group>"; };
 		F8FE699321489E0800EFAAC9 /* alarm-you-tube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alarm-you-tube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FE699621489E0800EFAAC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8FE699821489E0800EFAAC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 				F8FE699D21489E0900EFAAC9 /* Assets.xcassets */,
 				F8FE69A221489E0900EFAAC9 /* Info.plist */,
 				F84EEE402149D14F0033D927 /* GoogleService-Info.plist */,
+				F888A94D214C6099001FA997 /* JSONSampleData.geojson */,
 			);
 			path = "alarm-you-tube";
 			sourceTree = "<group>";

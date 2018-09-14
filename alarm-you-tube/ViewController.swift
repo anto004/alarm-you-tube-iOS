@@ -12,10 +12,92 @@ import GoogleAPIClientForREST
 import GTMSessionFetcher
 
 class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+    
+    //Browser key, not iOS key
+    var apiKey = "AIzaSyAfsF77pcTVfn3K_HIn0-FYMtc7ZDGsC44";
+    var desiredChannelsArray = ["Google", "Apple"]
+    var channelIndex = 0
+    var channelsDataArray = Array<Dictionary<NSObject, Any>>();
 
     @IBAction func signInButton(_ sender: UIButton) {
-        
+        getChannelDetails(channelID: false)
     }
+    
+   
+    func performGetRequest(targetURL: URL, completion: @escaping (_ data: Data?, _ HTTPStatusCode: Int, _ error: Error?) -> Void) {
+        let request = NSMutableURLRequest(url: targetURL)
+        request.httpMethod = "GET";
+        
+        //Add parameters
+        
+        let session = URLSession.shared;
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            DispatchQueue.main.async {
+                completion(data, (response as! HTTPURLResponse).statusCode, error)
+            }
+                
+        }
+        task.resume()
+    }
+    
+    func getChannelDetails(channelID: Bool){
+        var urlString: String!
+        if !channelID {
+            urlString = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails,snippet&forUsername=\(desiredChannelsArray[channelIndex])&key=\(apiKey)"
+        }
+        
+        let targetURL = URL(string: urlString);
+        
+        performGetRequest(targetURL: targetURL!) { (data, HTTPStatusCode, error) in
+            if HTTPStatusCode == 200 && error == nil {
+                // Convert the JSON data to a dictionary.
+                let resultsDict = try? JSONSerialization.jsonObject(with: data!) as! Dictionary<NSObject, AnyObject>
+                
+                print("Returned Json data from youtube: \(resultsDict)")
+//                if result = resultsDic{
+//                    // Get the first dictionary item from the returned items (usually there's just one item).
+//                    let items: AnyObject = resultsDict["items"] as! AnyObject
+//                    let firstItemDict = (items as! Array<AnyObject>)[0] as! Dictionary<NSObject, AnyObject>
+//
+//                    // Get the snippet dictionary that contains the desired data.
+//                    let snippetDict = firstItemDict["snippet"] as! Dictionary<NSObject, AnyObject>
+//
+//                    // Create a new dictionary to store only the values we care about.
+//                    var desiredValuesDict: Dictionary<NSObject, AnyObject> = Dictionary<NSObject, AnyObject>()
+//                    desiredValuesDict["title"] = snippetDict["title"]
+//                    desiredValuesDict["description"] = snippetDict["description"]
+//                    desiredValuesDict["thumbnail"] = ((snippetDict["thumbnails"] as! Dictionary<NSObject, AnyObject>)["default"] as! Dictionary<NSObject, AnyObject>)["url"]
+//
+//                    // Save the channel's uploaded videos playlist ID.
+//                    desiredValuesDict["playlistID"] = ((firstItemDict["contentDetails"] as! Dictionary<NSObject, AnyObject>)["relatedPlaylists"] as! Dictionary<NSObject, AnyObject>)["uploads"]
+//
+//
+//                    // Append the desiredValuesDict dictionary to the following array.
+//                    self.channelsDataArray.append(desiredValuesDict)
+//                }
+               
+            }
+            else {
+                print("HTTP Status Code = \(HTTPStatusCode)")
+                print("Error while loading channel details: \(error)")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func apiCall() {
         //Using Youtube API
@@ -41,7 +123,7 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
                     if let urlContent = data {
                         
                         DispatchQueue.main.sync {
-                           
+                            
                         }
                         
                     }
@@ -152,7 +234,6 @@ class ViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-
 
 }
 
