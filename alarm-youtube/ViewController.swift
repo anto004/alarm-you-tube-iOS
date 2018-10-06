@@ -10,14 +10,73 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    //Browser key, not iOS key
+    var apiKey = "AIzaSyAfsF77pcTVfn3K_HIn0-FYMtc7ZDGsC44";
+    var desiredChannelsArray = ["Google", "Apple"]
+    var channelIndex = 0
+    var channelsDataArray = Array<Dictionary<NSObject, Any>>();
+    
+    
+    @IBAction func fetchButton(_ sender: UIButton) {
+        getChannelDetails(channelID: false);
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func performGetRequest(targetURL: URL, completion: @escaping (_ data: Data?, _ HTTPStatusCode: Int, _ error: Error?) -> Void) {
+        let request = NSMutableURLRequest(url: targetURL)
+        request.httpMethod = "GET";
+        
+        //Add parameters
+        
+        let session = URLSession.shared;
+        
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            DispatchQueue.main.async {
+                completion(data, (response as! HTTPURLResponse).statusCode, error)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func getChannelDetails(channelID: Bool){
+        var urlString: String!
+        if !channelID {
+            urlString = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails,snippet&forUsername=\(desiredChannelsArray[channelIndex])&key=\(apiKey)"
+        }
+        
+        let targetURL = URL(string: urlString);
+        
+        performGetRequest(targetURL: targetURL!) { (data, HTTPStatusCode, error) in
+            if HTTPStatusCode == 200 && error == nil {
+                // Convert the JSON data to a dictionary.
+                let resultsDict = try? JSONSerialization.jsonObject(with: data!) as! Dictionary<String, Any>
+                
+                if let results = resultsDict {
+                    var values = [String: Any]();
+                    let itemsArray = results["items"] as! [Any];
+                    let item = itemsArray[0] as! [String: Any];
+                    
+                    //Get Snippets
+                    let snippet = item["snippet"] as! [String: Any];
+                    values["title"] = snippet["title"];
+                    values["description"] = snippet["description"];
+                    if let thumbnail = snippet["thumbnails"] as? [String: Any], let defaultObj = thumbnail["default"] as? [String: Any]{
+                        values["thumbnail"] = defaultObj["url"];
+                    }
+                    
+                    //Get Uploads playlist ID
+                    let contentDetails = item["contentDetails"] as! [String: Any];
+                    let relatedPlaylists = contentDetails["relatedPlaylists"] as! [String: Any];
+                    values["playlistID"] = relatedPlaylists["uploads"];
+                    
+                }
+                
+            }
+            else {
+                print("HTTP Status Code = \(HTTPStatusCode)")
+                print("Error while loading channel details: \(error)")
+            }
+        }
     }
 
 

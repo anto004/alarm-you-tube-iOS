@@ -1,0 +1,42 @@
+{
+    "kind": "youtube#channelListResponse",
+    "etag": "\"Y3xTLFF3RLtHXX85JBgzzgp2Enw/vTcBxrLzIZMaCeqgOzHFbBhLTUs\"",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 5
+    },
+    "items": [
+              {
+              
+              "kind": "youtube#channel",
+              "etag": "\"Y3xTLFF3RLtHXX85JBgzzgp2Enw/Wd_D4NnOqPTiOtqOKvlNDEMuMxY\"",
+              "id": "UCE_M8A5yxnLfW0KghEeajjw",
+              "snippet": {
+              "title": "Apple",
+              "description": "Apple designs the Mac, along with OS X, iLife, and iWork. It leads the digital music revolution with iPods and iTunes. It reinvented the mobile phone with iPhone and App Store. And it's defining the future of mobile media and computing with iPad.",
+              "publishedAt": "2005-06-22T05:12:23.000Z",
+              "thumbnails": {
+              "default": {
+              "url": "https://yt3.ggpht.com/-KdgJnz1HIdQ/AAAAAAAAAAI/AAAAAAAAAAA/4vVN7slJqj4/s88-c-k-no/photo.jpg"
+              },
+              "medium": {
+              "url": "https://yt3.ggpht.com/-KdgJnz1HIdQ/AAAAAAAAAAI/AAAAAAAAAAA/4vVN7slJqj4/s240-c-k-no/photo.jpg"
+              },
+              "high": {
+              "url": "https://yt3.ggpht.com/-KdgJnz1HIdQ/AAAAAAAAAAI/AAAAAAAAAAA/4vVN7slJqj4/s240-c-k-no/photo.jpg"
+              }
+              },
+              "localized": {
+              "title": "Apple",
+              "description": "Apple designs the Mac, along with OS X, iLife, and iWork. It leads the digital music revolution with iPods and iTunes. It reinvented the mobile phone with iPhone and App Store. And it's defining the future of mobile media and computing with iPad."
+              }
+              },
+              "contentDetails": {
+              "relatedPlaylists": {
+              "uploads": "UUE_M8A5yxnLfW0KghEeajjw"
+              },
+              "googlePlusUserId": "115967756576401290385"
+              }
+              }
+              ]
+}
