@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F88C04D9216D4C66003E1B9C /* NewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C04D8216D4C66003E1B9C /* NewAlarmViewController.swift */; };
+		F88C04DB216D5413003E1B9C /* EditAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C04DA216D5413003E1B9C /* EditAlarmViewController.swift */; };
 		F8A199BD214C79CB0082699D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A199BC214C79CB0082699D /* AppDelegate.swift */; };
 		F8A199BF214C79CB0082699D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A199BE214C79CB0082699D /* ViewController.swift */; };
 		F8A199C2214C79CB0082699D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8A199C0214C79CB0082699D /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F88C04D8216D4C66003E1B9C /* NewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmViewController.swift; sourceTree = "<group>"; };
+		F88C04DA216D5413003E1B9C /* EditAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlarmViewController.swift; sourceTree = "<group>"; };
 		F8A199B9214C79CB0082699D /* alarm-youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alarm-youtube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A199BC214C79CB0082699D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8A199BE214C79CB0082699D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				F8A199C8214C79CC0082699D /* Info.plist */,
 				F8A199CF2152B5DE0082699D /* JSONVideosData.geojson */,
 				F8A5C072216823C000FC8914 /* AlarmListTableViewController.swift */,
+				F88C04D8216D4C66003E1B9C /* NewAlarmViewController.swift */,
+				F88C04DA216D5413003E1B9C /* EditAlarmViewController.swift */,
 			);
 			path = "alarm-youtube";
 			sourceTree = "<group>";
@@ -148,7 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88C04DB216D5413003E1B9C /* EditAlarmViewController.swift in Sources */,
 				F8A199BF214C79CB0082699D /* ViewController.swift in Sources */,
+				F88C04D9216D4C66003E1B9C /* NewAlarmViewController.swift in Sources */,
 				F8A5C073216823C000FC8914 /* AlarmListTableViewController.swift in Sources */,
 				F8A199BD214C79CB0082699D /* AppDelegate.swift in Sources */,
 			);
